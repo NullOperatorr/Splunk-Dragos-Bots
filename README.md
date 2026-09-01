@@ -1,2 +1,2 @@
-# splunk-dragos-bots
+# Splunk-Dragos-Bots
 CyberLab-09
