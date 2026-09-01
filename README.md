@@ -10,7 +10,7 @@ Hello Guys ! today I’m going to walkthrough one of Splunk scenarios related to
 https://bots.splunk.com/
 
  ## Scenario:
-1up your ics/ot cybersecurity team
+1up your ICS/OT cybersecurity team
 
 BOTS scenario 1 ‘1UP Your ICS/OT Cybersecurity Team’ is an Industrial Control System (ICS) Cybersecurity 101 with Dragos. This capture-the-flag (CTF) scenario will upskill your team on Operational Technology (OT), ICS and SCADA cybersecurity topics in a fun and engaging way.
 
