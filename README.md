@@ -9,6 +9,11 @@ Hello Guys ! today I’m going to walkthrough one of Splunk scenarios related to
 
 https://bots.splunk.com/
 
+##  Objective
+
+Learn how to leverage Splunk and Dragos data to investigate and identify
+cybersecurity threats in real environments.
+
  ## Scenario:
 1up your ICS/OT cybersecurity team
 
@@ -401,6 +406,14 @@ index="dragos"  src_ip="192.168.208.1"
 ```
 
 Explanation: We identified 192.168.208.1 as the source IP, as it was clearly running Nmap (a network scanning tool). We then used the table command to display the body and destination IP fields from the logs.
+
+
+##  Lessons Learned
+
+- Using Splunk to search and analyze security events.
+- Investigating suspicious activity in industrial environments.
+- Identifying potential threats from ICS/OT datasets.
+- Understanding the importance of visibility across both IT and OT environments.
 
 Thank you.
 
