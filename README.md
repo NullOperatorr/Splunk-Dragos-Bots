@@ -197,9 +197,214 @@ Based on the previous question, what is the hostname of where the scanner origin
 ## #117
 Host 192.168.193.12 sent a file from 192.168.2.2. What was the access technique used?
 
-**Answer:** None Logon
+**Answer:** None Logon  
+
+<img width="640" height="142" alt="image" src="https://github.com/user-attachments/assets/64bbf7c2-1b00-4404-af58-b110225739ce" />  
+
+```bash
+index="dragos" src_ip=192.168.193.12 dest_ip=192.168.2.2
+|table body
+```
+
+## #118  
+There was a Metasploit reverse TCP shell detected, started from 10.0.0.128. Provide the IPv4 address of where it was connecting to.  
+**Answer:** 10.0.0.131  
+
+<img width="640" height="142" alt="image" src="https://github.com/user-attachments/assets/036f07a0-9ccc-486d-981e-3913f95c38b3" />  
+
+```bash
+index="dragos" Metasploit reverse TCP shell
+```
+
+## #119  
+What is the IPv4 address of the host that uses pycomm3 the most?
+
+**Answer:** 192.168.212.226
+
+<img width="640" height="205" alt="image" src="https://github.com/user-attachments/assets/e13c5df9-80df-42f4-9857-5e28d6fcd474" />  
+
+```bash
+index="dragos"   pycomm3
+|eval src_ip= split (src_ip, ",")
+| mvexpand src_ip
+| stats count by src_ip 
+| sort -count
+```
+
+Explanation: The eval command was used to split multiple source IPs into separate values when they were stored in one field. The mvexpand command then separated these values into individual events so each IP could be analyzed on its own. After that, stats count by src_ip was used to count how many times each source IP appeared, and finally sort -count organized the results from the most frequent IP to the least frequent.
+
+## #120  
+What protocol does Pycomm3 to use to read and write tag values?
+
+**Answer:** EtherNet/IP  
+
+<img width="640" height="265" alt="image" src="https://github.com/user-attachments/assets/0728bf11-d0f9-4424-9fa2-ffb19c330330" />  
+
+Only search for it.
+
+## #121  
+What type of data can be used with the ‘request_data’ command?
+
+**Answer:** any
+
+Only search for it.
+
+## #122
+In alphabetical order, and separated by commas, i.e. a,b,c — What three drivers come installed with pycomm3?
+
+**Answer:** CIPDriver,LogixDriver,SLCDriver  
+
+<img width="640" height="770" alt="image" src="https://github.com/user-attachments/assets/bd6c1e32-babf-4bd9-9a4f-5f32abd023e2" />  
+
+Only search for it.
+
+## #123  
+What type of PLCs can be used with Pycomm3 ?
+
+**Answer:** allen-bradley,rockwell automation  
+
+<img width="640" height="102" alt="image" src="https://github.com/user-attachments/assets/e9f539ef-f5b4-4a34-9819-e012caa52604" />  
+
+Only search for it.
+  
+## #124  
+What is the IP address of the Honeywell DSA Primary?
+
+**Answer:** 10.1.0.101  
+
+<img width="640" height="196" alt="image" src="https://github.com/user-attachments/assets/1c6eba66-6c70-4e17-8ac9-db4e1ee2daf7" />
 
 
+  ```bash
+index="dragos" Honeywell DSA Primary
+```
+
+or you can search for the default IP online.
+
+## #125  
+What popular shell was used to execute commands on remote hosts from the MSSQL server?
+
+**Answer:** xp_cmdshell  
+
+<img width="640" height="153" alt="image" src="https://github.com/user-attachments/assets/6647c86a-4518-4b59-819c-49ccb4a8c525" />  
+
+## #126  
+By default that command is disabled. What command is used to enable it?
+
+**Answer:** sp_configure
+
+## #127  
+Asset 21151 was potentially compromised. What was the first notification related to the asset after compromise was detected?
+
+**Answer:** PLC Date/Time Change  
+
+<img width="640" height="206" alt="image" src="https://github.com/user-attachments/assets/04c2e696-8af9-49d7-af81-4fea13920b6e" />  
+
+```bash
+index="dragos"  21151
+| table body _time
+| dedup body
+| sort _time
+```
+
+## #128  
+
+One of the hosts on the network is used for running certain pieces of Siemens software and is named accordingly. It looks like one of the hosts was attempting to download a file multiple times. What is the IPv4 address of the destination it was trying to download the file from?
+
+**Answer:** 192.168.192.74  
+
+<img width="640" height="518" alt="image" src="https://github.com/user-attachments/assets/a675a2e6-f691-4815-9cb9-1f599771ca1a" />  
+
+```bash
+index="dragos"
+| table src_host
+| dedup src_host
+```
+
+<img width="640" height="310" alt="image" src="https://github.com/user-attachments/assets/d3a8302d-b88a-473e-b3e5-756fd1f0d5d2" />  
+
+```bash
+index="dragos"  src_host="desktop-qi8ghvg,ews-hq-siemens0"
+```
+
+Explanation: You can try both Siemens host devices until you reach the correct answer. We will go with ews-hq-siemens0, then conclude that the download request originates from this device, so we will search for the destination IP.
+
+## #129  
+Referring to the previous question, what was the extension of the file that was downloaded?
+
+**Answer:** jar  
+
+<img width="640" height="267" alt="image" src="https://github.com/user-attachments/assets/d76f0076-af43-4f81-a672-78a3507226ba" />  
+
+```bash
+index="dragos"  src_host="desktop-qi8ghvg,ews-hq-siemens0"
+```
+  
+## #130  
+What is the source IP address that tried to negotiate RDP on port 55555?
+
+**Answer:** 192.168.208.1
+
+<img width="640" height="192" alt="image" src="https://github.com/user-attachments/assets/eeb3026b-7b70-4508-9b59-b6e34e49ecb4" />  
+
+```bash
+index="dragos" RDP
+```
+
+Explanation: We will search for the word RDP and the answer is very straight forward.
+
+## #131  
+What is the common port number used for RDP?
+
+**Answer:** 3389  
+
+<img width="640" height="257" alt="image" src="https://github.com/user-attachments/assets/1bdd5cf2-f1cd-4385-a0ea-0aaacd759fb4" />  
+
+Explanation: It is common knowledge that Remote Desktop Services (RDP), which are used to access remote devices, operate on port 3389.
+
+## #132  
+During a forwarded RDP Negotiation request with a nonstandard destination port with a Dragos Source ID of 7834, what was the destination host name?
+
+**Answer:** rshistorian
+
+<img width="640" height="250" alt="image" src="https://github.com/user-attachments/assets/0accb558-7572-4272-9269-bc3123317f74" />
+<img width="640" height="202" alt="image" src="https://github.com/user-attachments/assets/771555ed-71f1-4684-9cb1-d587dbbad364" />
+
+```bash
+index="dragos" src_dragos_id=7834   
+index="dragos" 7834 src_dragos_id=7834 body="Forwarded RDP Negotiation Request - nonstandard dst port"
+```
+
+Explanation: First we search with the src_dragos_id as in the question then we look in the body for any useful data, finally we reach our goal and get the dest_name
+
+## #133  
+What is the Dragos ID number of the rshistorian host?
+
+**Answer:** 33
+
+<img width="640" height="215" alt="image" src="https://github.com/user-attachments/assets/9d0cc5ee-9aa9-4fbb-9fa4-131166b06a5d" />
+
+
+```bash
+index="dragos" 7834 src_dragos_id=7834 body="Forwarded RDP Negotiation Request - nonstandard dst port" dest_host=rshistorian
+```
+
+## #134  
+Which test asset IP address was scanned by NMAP from the source IP of 192.168.208.1?
+
+**Answer:** 192.168.192.74
+
+<img width="640" height="449" alt="image" src="https://github.com/user-attachments/assets/97d03677-c728-4864-aeed-735e8ad558b9" />
+
+
+```bash
+index="dragos"  src_ip="192.168.208.1"
+|table _time dest_ip body
+```
+
+Explanation: We identified 192.168.208.1 as the source IP, as it was clearly running Nmap (a network scanning tool). We then used the table command to display the body and destination IP fields from the logs.
+
+Thank you.
 
 
 
