@@ -47,7 +47,7 @@ Based on the answer in question 102, answering in MB, how large is the user memo
 
 **Answer:** 2
 
-### 104  
+## #104  
 What is the built-in COM (communication) port?
 
 **Answer:** rs-232  
