@@ -24,7 +24,7 @@ Before we start, some questions do not require technical skills, they require se
 
 ## Questions:
 
-**#101**   
+## #101    
 Which host gets notified when the 1756-L61/B LOGIX5561 card undergoes a PLC status change?
 
 **Answer:** 192.168.97.6  
